@@ -24,7 +24,7 @@ public class Polyclinic2Application implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
 
         Console.menu();
 
@@ -93,5 +93,4 @@ public class Polyclinic2Application implements CommandLineRunner {
         app.setBannerMode(Banner.Mode.OFF);
         app.run(args);
     }
-
 }

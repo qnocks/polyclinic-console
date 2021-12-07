@@ -1,10 +1,16 @@
 package ru.qnocks.domain;
 
+import lombok.*;
+
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
 @Entity
 @Table(name = "doctors")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@RequiredArgsConstructor
 public class Doctor {
 
     @Id
@@ -14,76 +20,26 @@ public class Doctor {
     @Column(name = "full_name")
     @NotBlank(message = "This field cannot be blank")
     @Size(max = 25, message = "Full name's length must be up to 25 characters")
+    @NonNull
     private String fullName;
 
     @Column(name = "specialty")
     @NotBlank(message = "This field cannot be blank")
+    @NonNull
     private String specialty;
 
     @Column(name = "office_number")
     @NotNull(message = "This field can't be null")
     @Min(value = 1, message = "The office number cannot be less then 1")
+    @NonNull
     private Integer officeNumber;
 
     @Column(name = "schedule")
     @NotBlank(message = "This field cannot be blank")
     @Pattern(regexp = "([01]?[0-9]|2[0-3]):[0-5][0-9]-([01]?[0-9]|2[0-3]):[0-5][0-9]",
             message = "Doctor's schedule should match pattern HH:MM-HH:MM 24 hours")
+    @NonNull
     private String schedule;
-
-    public Doctor() {
-    }
-
-    public Doctor(String fullName, String specialty, Integer officeNumber, String schedule) {
-        this.fullName = fullName;
-        this.specialty = specialty;
-        this.officeNumber = officeNumber;
-        this.schedule = schedule;
-    }
-
-    public Doctor(Long id, String fullName, String specialty, Integer officeNumber, String schedule) {
-        this.id = id;
-        this.fullName = fullName;
-        this.specialty = specialty;
-        this.officeNumber = officeNumber;
-        this.schedule = schedule;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public String getSpecialty() {
-        return specialty;
-    }
-
-    public void setSpecialty(String specialty) {
-        this.specialty = specialty;
-    }
-
-    public Integer getOfficeNumber() {
-        return officeNumber;
-    }
-
-    public void setOfficeNumber(Integer officeNumber) {
-        this.officeNumber = officeNumber;
-    }
-
-    public String getSchedule() {
-        return schedule;
-    }
 
     public void setSchedule(String schedule) {
 
@@ -103,16 +59,5 @@ public class Doctor {
         }
 
         this.schedule = schedule;
-    }
-
-    @Override
-    public String toString() {
-        return "Doctor{" +
-                "id=" + id +
-                ", fullName='" + fullName + '\'' +
-                ", specialty='" + specialty + '\'' +
-                ", officeNumber=" + officeNumber +
-                ", schedule='" + schedule + '\'' +
-                '}';
     }
 }

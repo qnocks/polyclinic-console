@@ -1,5 +1,6 @@
 package ru.qnocks.controllers;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ru.qnocks.domain.Doctor;
@@ -8,13 +9,9 @@ import ru.qnocks.services.DoctorsService;
 import java.util.List;
 
 @Component
+@RequiredArgsConstructor
 public class DoctorsController {
     private final DoctorsService doctorsService;
-
-    @Autowired
-    public DoctorsController(DoctorsService doctorsService) {
-        this.doctorsService = doctorsService;
-    }
 
     public List<Doctor> getAll() {
         return doctorsService.getALl();

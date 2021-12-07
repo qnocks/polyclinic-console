@@ -1,22 +1,19 @@
 package ru.qnocks.services;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.qnocks.domain.Patient;
-import ru.qnocks.enums.District;
+import ru.qnocks.domain.enums.District;
 import ru.qnocks.repositories.PatientsRepository;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class PatientsService {
     private final PatientsRepository patientsRepository;
-
-    @Autowired
-    public PatientsService(PatientsRepository PatientsRepository) {
-        this.patientsRepository = PatientsRepository;
-    }
 
     public List<Patient> getALl() {
         return (List<Patient>) patientsRepository.findAll();
@@ -49,5 +46,4 @@ public class PatientsService {
     public List<Patient> getAllByDistrict(District district) {
         return patientsRepository.findAllByDistrict(district);
     }
-
 }

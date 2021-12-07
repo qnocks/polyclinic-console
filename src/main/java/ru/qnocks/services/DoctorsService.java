@@ -1,8 +1,7 @@
 package ru.qnocks.services;
 
-import com.sun.net.httpserver.Headers;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.qnocks.domain.Doctor;
 import ru.qnocks.repositories.DoctorsRepository;
@@ -10,13 +9,9 @@ import ru.qnocks.repositories.DoctorsRepository;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class DoctorsService {
     private final DoctorsRepository doctorsRepository;
-
-    @Autowired
-    public DoctorsService(DoctorsRepository doctorsRepository) {
-        this.doctorsRepository = doctorsRepository;
-    }
 
     public List<Doctor> getALl() {
         return (List<Doctor>) doctorsRepository.findAll();

@@ -1,18 +1,15 @@
 package ru.qnocks.client;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ru.qnocks.domain.Patient;
-import ru.qnocks.enums.District;
+import ru.qnocks.domain.enums.District;
 
 import java.time.LocalDate;
 import java.util.Scanner;
 
 @Component
 public class Console {
-
     private static Scanner sc;
     private static ApplicationFacade app;
 

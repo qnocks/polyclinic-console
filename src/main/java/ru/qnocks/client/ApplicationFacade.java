@@ -1,6 +1,6 @@
 package ru.qnocks.client;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import ru.qnocks.controllers.DoctorsController;
 import ru.qnocks.controllers.ObservationsController;
@@ -8,26 +8,20 @@ import ru.qnocks.controllers.PatientsControllers;
 import ru.qnocks.domain.Doctor;
 import ru.qnocks.domain.Observation;
 import ru.qnocks.domain.Patient;
-import ru.qnocks.enums.District;
+import ru.qnocks.domain.enums.District;
 
 import java.time.LocalDate;
 import java.util.List;
 
 @Component
+@RequiredArgsConstructor
 public class ApplicationFacade {
 
     private final DoctorsController doctorsController;
-    private final PatientsControllers patientsControllers;
-    private final ObservationsController observationsController;
 
-    @Autowired
-    public ApplicationFacade(DoctorsController doctorsController,
-                             PatientsControllers patientsControllers,
-                             ObservationsController observationsController) {
-        this.doctorsController = doctorsController;
-        this.patientsControllers = patientsControllers;
-        this.observationsController = observationsController;
-    }
+    private final PatientsControllers patientsControllers;
+
+    private final ObservationsController observationsController;
 
     public void createDoctor(String fullName, String specially, int officeNumber, String schedule) {
         doctorsController.save(new Doctor(fullName, specially, officeNumber, schedule));
